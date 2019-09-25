@@ -1,4 +1,21 @@
-<h1>App Works</h1>
-<button *ngIf="Pwa.promptEvent" (click)="installPwa()">
-  Install
-</button>
+
+<div class="container">
+  <h4>Todo List</h4>
+  <button *ngIf="Pwa.promptEvent" (click)="installPwa()">
+    Install
+  </button>
+  
+  <form [formGroup]="addForm" (ngSubmit)="submit()">
+      <input type="text" formControlName="name" class="form-control" placeholder="Enter todo" required>
+      <br/>
+      <button type="submit" class="btn btn-success btn-block"> Add</button>
+  </form>
+  <br/>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let todo of todos;index as i">
+      {{i+1}}. {{todo.name}}
+    <!-- <button (click)="deleteTodo(todo)">delete</button> -->
+    </li>
+  </ul>
+</div>
